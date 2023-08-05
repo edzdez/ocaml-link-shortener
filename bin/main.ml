@@ -1,1 +1,4 @@
-let () = print_endline "Hello, World!"
+    let () =
+        Dream.run
+        @@ Dream.logger
+        @@ 

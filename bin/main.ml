@@ -1,3 +1,4 @@
+open Base
 open Ppx_yojson_conv_lib.Yojson_conv.Primitives
 
 module type DB = Caqti_lwt.CONNECTION
@@ -29,8 +30,12 @@ let () =
              | _ :: _ -> Dream.empty `Internal_Server_Error);
          Dream.post "/api/shorten" (fun request ->
              let%lwt body = Dream.body request in
-             let url_object =
-               body |> Yojson.Safe.from_string |> url_object_of_yojson
-             in
-             `String url_object.url |> Yojson.Safe.to_string |> Dream.json);
+             try
+               let url_object =
+                 body |> Yojson.Safe.from_string |> url_object_of_yojson
+               in
+               `String url_object.url |> Yojson.Safe.to_string |> Dream.json
+             with Ppx_yojson_conv_lib.Yojson_conv.Of_yojson_error (exn, _) ->
+               Dream.log "Bad request: %s" (Exn.to_string exn);
+               Dream.empty `Bad_Request);
        ]

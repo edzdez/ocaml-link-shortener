@@ -1,5 +1,7 @@
 (executable
  (public_name ocaml_link_shortener)
  (name main)
- (libraries ocaml_link_shortener dream)
+ (libraries ocaml_link_shortener
+            dream
+            caqti-driver-sqlite3)
  (preprocess (pps lwt_ppx ppx_yojson_conv)))

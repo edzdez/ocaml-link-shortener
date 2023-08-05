@@ -1,0 +1,2 @@
+(library
+ (name ocaml_link_shortener))

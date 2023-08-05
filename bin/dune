@@ -1,0 +1,4 @@
+(executable
+ (public_name ocaml_link_shortener)
+ (name main)
+ (libraries ocaml_link_shortener))

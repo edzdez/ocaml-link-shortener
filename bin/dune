@@ -3,6 +3,7 @@
  (name main)
  (libraries ocaml_link_shortener
             base
+            uuidm
             dream
             caqti-driver-sqlite3)
  (preprocess (pps lwt_ppx ppx_yojson_conv)))

@@ -1,0 +1,4 @@
+(library
+  (name models)
+  (libraries ocaml_link_shortener)
+  (preprocess (pps lwt_ppx ppx_yojson_conv)))

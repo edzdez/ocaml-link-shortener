@@ -1,2 +1,6 @@
 (library
- (name ocaml_link_shortener))
+ (name ocaml_link_shortener)
+ (libraries base
+            dream
+            caqti-driver-sqlite3
+            uuidm))
